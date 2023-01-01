@@ -1,13 +1,19 @@
-﻿Console.WriteLine("Введите натуральное число больше 1: ");
-int number = int.Parse(Console.ReadLine());
+﻿Console.WriteLine("Введите число M:");
+int numberM = int.Parse(Console.ReadLine());
+
+Console.WriteLine("Введите число N:");
+int numberN = int.Parse(Console.ReadLine());
 
 
-void NumberCounter (int number)
+void GapNumberSum (int numberM, int numberN, int sum)
 {
-    if (number < 0) Console.Write($"{number} не натуральное число");
-    if (number == 0) return;
-    Console.Write("{0,4}", number);
-    NumberCounter (number - 1);
+    if (numberM > numberN) 
+    {
+        Console.WriteLine($"Сумма натуральных элементов в промежутке от M до N: {sum}"); 
+        return;
+    }
+    sum = sum + (numberM++);
+    GapNumberSum(numberM, numberN, sum);
 }
 
-NumberCounter(number);
+GapNumberSum(numberM, numberN, 0);
